@@ -1,24 +1,43 @@
-# Mail archives
+# PST / mail files (including encrypted containers, which can still be sensitive)
 *.pst
 *.ost
 *.msg
 *.eml
 *.mbox
+*.pstsc
+*.psc
+*.pstv
 
-# Search indexes and local databases
+# Full-text indexes, backups and runtime state
 *.sqlite
 *.sqlite3
+*.sqlite-wal
+*.sqlite-shm
 *.db
+*.db-wal
+*.db-shm
+*.bak
+vault/
 indexes/
 data/
 archives/
+logs/
+*.log
 
-# Secrets and configuration
+# Secrets and keys
 .env
 .env.*
 *.key
 *.pem
+*.p12
+*.pfx
+*.dump
 
-# Logs
-logs/
-*.log
+# Python / build files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+build/
+dist/

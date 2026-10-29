@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pstscout"
+version = "0.1.0.dev0"
+description = "Portable, offline-first PST search (development foundation)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "PSTScout Contributors"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+pstscout = "pstscout.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
