@@ -44,3 +44,19 @@ vault/                 # versioned encrypted containers (future)
 
 All application data must remain inaccessible while the vault is locked;
 merely using a `.pstsc` extension is not encryption.
+
+## M1 implementation (read-only bridge)
+
+`src/pstscout/reader.py` launches the bundled-source `inspect.mjs` or
+`attachment.mjs` using a local Node.js interpreter. The parser uses
+`pst-extractor` 1.12.0. Inspect output is NDJSON, returned as typed Python
+`MessageInfo`/`ScanSummary` events. Attachments stream raw bytes via a pipe
+into a bounded SHA-256 probe and are not stored. Node stderr is drained but
+not persisted. Metadata is printed only when the user explicitly calls the
+inspection command. No PST files are imported, modified or indexed at M1.
+
+**Important:** this bridge uses a normal filesystem PST path and does not
+implement M2's encrypted random-access byte source. The JS library opens
+files itself, so the M2 integration likely requires modifying the library's
+`readSync` backend to call a vetted authenticated chunk reader. This is a
+feasibility requirement, not a demonstrated feature.

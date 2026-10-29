@@ -41,3 +41,7 @@ __pycache__/
 .venv/
 build/
 dist/
+
+# Node development dependencies (installed locally, never commit)
+node_modules/
+.npm/

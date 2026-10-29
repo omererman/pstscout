@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pstscout"
-version = "0.1.0.dev0"
-description = "Portable, offline-first PST search (development foundation)"
+version = "0.2.0.dev0"
+description = "Portable, offline-first PST search (read-only PST adapter prototype)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -23,3 +23,6 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.setuptools.package-data]
+pstscout = ["node/*.mjs", "node/package.json", "node/package-lock.json"]

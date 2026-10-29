@@ -1,3 +1,3 @@
-"""PSTScout development package. Not a production encrypted archive."""
+"""PSTScout — portable PST research and search prototype."""
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.2.0.dev0"
