@@ -1,0 +1,29 @@
+PSTScout M2.1 — Güvenli hata mesajı düzeltmesi
+
+Bu paket sadece M2.1 kurulu PSTScout için yama içerir.
+ZIP dosyasını pstscout proje köküne -Force ile açın.
+Parola veya gerçek PST dosyasını paylaşmayın.
+
+PowerShell:
+Expand-Archive -Path "$HOME\Downloads\PSTScout_M2_1_Hata_Mesaji_Duzeltme.zip" -DestinationPath . -Force
+.\.venv\Scripts\python.exe -m pytest -q
+
+Önce bir kez:
+$demo = Join-Path $env:TEMP "PSTScout-M2-Test"
+New-Item -ItemType Directory -Force $demo | Out-Null
+
+Deneme verisi yoksa:
+.\.venv\Scripts\python.exe -c "from pathlib import Path; import sys; Path(sys.argv[1]).write_bytes(b'!BDN' + b'X' * 1500000)" "$demo\demo.bin"
+
+Şifrele:
+.\.venv\Scripts\python.exe -m pstscout.vault_cli encrypt --source "$demo\demo.bin" --output "$demo\demo.pstsc"
+
+Parola en az 16 UTF-8 bayt uzunluğunda olmalı.
+Parola ekranda görünmez; ayrı mesaj olarak yazmayın.
+Var olan .pstsc dosyasının üzerine yazılmaz; yeniden denemelerde farklı dosya adı seçin.
+
+Başarıdan sonra:
+.\.venv\Scripts\python.exe -m pstscout.vault_cli verify --archive "$demo\demo.pstsc"
+.\.venv\Scripts\python.exe -m pstscout.vault_cli probe --archive "$demo\demo.pstsc" --offset 0 --length 4
+
+M2.1 halen üretime hazır, denetlenmiş şifreleme sistemi değildir.

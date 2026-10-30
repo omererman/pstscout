@@ -1,8 +1,13 @@
-PSTScout M1.2 patch — APPLY ON TOP OF M1.1
+PSTScout M2.2 experimental encrypted PST inspection bridge
 
-Copy the contents of this ZIP into the root of your existing pstscout git checkout, overwriting the 4 modified files. The patch DOES NOT contain a complete repository.
+PREREQUISITE: your existing PSTScout checkout with M1.2 and M2.1 already present.
+Do NOT start from the M0 repo: this ZIP adds code, it is not a complete project.
 
-Run: .\.venv\Scripts\python.exe -m pytest -q
-Then rerun the same PST: .\.venv\Scripts\python.exe -m pstscout inspect --pst "PATH\FILE.pst" --limit 0 --count-only
+Extract this ZIP at the PSTScout project root. No existing application files
+are overwritten. Then run:
 
-Only share SUMMARY, SKIP_REASONS, FOLDER_ERROR_HINTS. NEVER upload PST files, stdout of message-by-message inspection, passwords, or any raw parser errors.
+  .\.venv\Scripts\python.exe -m pytest -q
+
+Read docs/M2_2_DEVELOPMENT.md for end-to-end test commands.
+Do not upload PST files or disclose passwords and mail contents.
+This is a research prototype and is NOT production-audited.

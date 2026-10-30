@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [{name = "PSTScout Contributors"}]
-dependencies = []
+dependencies = ["cryptography>=44,<47"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]
