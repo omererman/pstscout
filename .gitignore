@@ -45,3 +45,9 @@ dist/
 # Node development dependencies (installed locally, never commit)
 node_modules/
 .npm/
+
+# M3.3: encrypted indices and interrupted staging files are still sensitive
+*.scindex*
+*.db-journal
+*.sqlite-journal
+*.building-*
